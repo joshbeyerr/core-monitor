@@ -1,7 +1,6 @@
-import newMonitors
+import monitor
 import threading
-import proxy_import
-
+from prox_import import proxy
 
 def useragent():
     useragentss = []
