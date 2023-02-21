@@ -1,0 +1,60 @@
+
+def useragent():
+    useragentss = []
+    userr = open('agent.txt', 'r')
+
+    for x in userr:
+        useragentss.append(x.rstrip('\n'))
+
+    userr.close()
+    return useragentss
+
+
+def proxy(file):
+    finishedProxies = []
+
+    f = open(file, "r")
+    for x in f:
+        # splitting apart proxies in list by : and appending it to list 'partproxies'
+        partedProxy = ((x.rstrip('\n')).split(':'))
+        if len(partedProxy) == 2:
+            proxyI = 'http://{}:{}'.format(partedProxy[0], partedProxy[1])
+            finishedProxies.append(proxyI)
+
+        elif len(partedProxy) == 4:
+
+            proxyI = 'http://{}:{}@{}:{}'.format(partedProxy[2], partedProxy[3], partedProxy[0], partedProxy[1])
+            finishedProxies.append(proxyI)
+
+    return finishedProxies
+
+
+def profiles(file):
+    with open(file) as f:
+        profiles = {}
+        count = 0
+        for line in f:
+            if count != 0:
+                line = line.split(',')
+
+                if bool(line[9]):
+                    profiles[line[1]] = {'profName': line[1], 'email': line[0], 'oneCheck': line[2], 'nameC': line[3], 'cardT': line[4],
+                                         'cardN': line[5], 'expM': line[6], 'expY': line[7], 'ccv': line[8],
+                                         'same': line[9], 'shipName': line[10], 'shipPhone': line[11], 'shipAdd': line[12],
+                                         'shipAdd2': line[13], 'shipAdd3': line[14], 'shipPost': line[15],
+                                         'shipCity': line[16], 'shipState': line[17], 'shipCont': line[18],
+                                         'billName': line[10], 'billPhone': line[11], 'billAdd': line[12],
+                                         'billAdd2': line[13], 'billAdd3': line[14], 'billPost': line[15],
+                                         'billCity': line[16], 'billState': line[17], 'billCont': line[18]}
+                else:
+                    profiles[line[1]] = {'email': line[0], 'oneCheck': line[2], 'nameC': line[3], 'cardT': line[4],
+                                         'cardN': line[5], 'expM': line[6], 'expY': line[7], 'ccv': line[8],
+                                         'same': line[9], 'shipName': line[10], 'shipPhone': line[11], 'shipAdd': line[12],
+                                         'shipAdd2': line[13], 'shipAdd3': line[14], 'shipPost': line[15],
+                                         'shipCity': line[16], 'shipState': line[17], 'shipCont': line[18],
+                                         'billName': line[19], 'billPhone': line[20], 'billAdd': line[21],
+                                         'billAdd2': line[22], 'billAdd3': line[23], 'billPost': line[24],
+                                         'billCity': line[25], 'billState': line[26], 'billCont': line[27]}
+            count += 1
+
+    return profiles
