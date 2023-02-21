@@ -28,7 +28,7 @@ def main():
         thread3 = threading.Thread(target=newMonitors.holtRenfrew, args=([['20308282005', '20283499006', '20269276012', '20269278007', '20269739011'], agents, proxies]))
         thread4 = threading.Thread(target=newMonitors.uggCa, args=(
         ['1135092:CHE', '5955:DRI', '5955:BLK', '5955:CHE', '1135092:BLK', '1135092:DRI', "1134991:CHE", "1134991:BLK",
-         '1122553:CHE', '1135092:MSG', '1134991S:FRSN', '1135092S:FRSN'], agentsssss, resi))
+         '1122553:CHE', '1135092:MSG', '1134991S:FRSN', '1135092S:FRSN'], agents, resi))
 
         thread1.start()
         thread2.start()
